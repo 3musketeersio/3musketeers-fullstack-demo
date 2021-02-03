@@ -6,7 +6,6 @@ services:
     working_dir: /var/task
     volumes:
       - .:/var/task:rw
-      - ./node_modules:/var/task/node_modules
     ports:
       - "9090:9090"
     expose:

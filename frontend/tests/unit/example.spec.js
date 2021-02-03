@@ -1,12 +1,12 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import Home from '@/components/Home.vue'
+import EventCard from '@/components/EventCard.vue'
 
-describe('Home.vue', () => {
+describe('EventCard.vue', () => {
   it('renders props.msg when passed', () => {
     const msg = 'new message'
-    const wrapper = shallowMount(Home, {
-      propsData: { msg }
+    const wrapper = shallowMount(EventCard, {
+      event: { msg }
     })
     expect(wrapper.text()).to.include(msg)
   })

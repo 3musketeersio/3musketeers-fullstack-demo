@@ -1,21 +1,34 @@
-RUNNER=docker-compose run --rm
+NODEJS_RUNNER=@docker-compose run --rm nodejs
 
-shell:
-	docker-compose run nodejs -e /bin/sh
-
+# Main targets
 clean:
-	$(RUNNER) nodejs rm -rf node_modules/* && rm -rf dist
+	$(NODEJS_RUNNER) rm -rf node_modules && rm -rf dist
 .PHONY: clean
 
-build:
-	$(RUNNER) nodejs yarn && $(RUNNER) nodejs yarn build
+build: node_modules
+	$(NODEJS_RUNNER) yarn build
 .PHONY: build
 
-run:
-	$(RUNNER) nodejs yarn run serve
+testUnit: node_modules
+	$(NODEJS_RUNNER) yarn test:unit
+
+testE2E: node_modules
+	$(NODEJS_RUNNER) yarn test:e2e
+
+run: dist
+	$(NODEJS_RUNNER) yarn run serve
 .PHONY: run
 
-# Internal targets
+deploy:
+	@echo "Deployed! You are a ninja rockstar!"
+.PHONY: deploy
 
-_deploy: 
-	$(RUNNER) aws s3 sync ./dist s3://$(AWS_BUCKET) --delete --sse 'AES256' && make _invalidate
+# Helpers targets
+
+shell:
+	$(NODEJS_RUNNER) /bin/sh
+
+# This will not run if node_module already exists
+node_modules:
+	$(NODEJS_RUNNER) yarn install
+

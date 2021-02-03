@@ -7,7 +7,7 @@
 build: .env
 	docker-compose build
 
-start: .env
+run: .env
 	docker-compose up
 
 stop: .env

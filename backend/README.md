@@ -6,10 +6,13 @@ This sub folders contains 2 APIs written in different languages: .Net and Node.j
 
 ```
 make build
-make test
-
-# To bootstrap or shutdown API Gateway and all Microservices
-make start
+make run
 make stop
 ```
 
+Then go to:
+
+
+To Do:
+[ ] Enable API Gateway
+[ ] Enable Auth0 token introspection

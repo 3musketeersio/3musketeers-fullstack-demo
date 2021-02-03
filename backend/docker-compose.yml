@@ -1,0 +1,22 @@
+---
+version: "3.7"
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    env_file: .env
+    ports:
+      - "8090:8080"
+    links:
+      - customers-api
+      - events-api
+
+  customers-api:
+    build: ./customerApi
+    env_file: .env
+
+  events-api:
+    build: ./events-api
+    env_file: .env
+    expose:
+      - "8000"

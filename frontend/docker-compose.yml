@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  nodejs:
+    image: node:15-alpine
+    working_dir: /var/task
+    volumes:
+      - .:/var/task:rw
+      - ./node_modules:/var/task/node_modules
+    ports:
+      - "9090:9090"
+    expose:
+      - "9090"
+  nginx:
+    image: nginx
+    ports:
+      - "8080:80"
+    expose:
+      - "80"

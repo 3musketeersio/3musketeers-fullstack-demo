@@ -1,33 +1,23 @@
-# IOL PoC
+#  3 Musketeers Full Stack Demo - Frontend
 
 ## Project setup
 ```
-yarn install
+make install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+make run
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+make build
 ```
 
-### Run your unit tests
+### Run your tests
 ```
-yarn test:unit
-```
-
-### Run your end-to-end tests
-```
-yarn test:e2e
-```
-
-### Lints and fixes files
-```
-yarn lint
+make test
 ```
 
 ### Customize configuration

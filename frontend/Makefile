@@ -1,6 +1,10 @@
 NODEJS_RUNNER=@docker-compose run --rm nodejs
 
 # Main targets
+.env:
+	@echo "no .env file found, copying from .env.template"
+	cp .env.template .env
+
 clean:
 	$(NODEJS_RUNNER) rm -rf node_modules && rm -rf dist
 .PHONY: clean
@@ -16,7 +20,7 @@ testE2E: node_modules
 	$(NODEJS_RUNNER) yarn test:e2e
 
 run: dist
-	$(NODEJS_RUNNER) yarn run serve
+	@docker-compose run --rm -p 9090:9090 nodejs yarn run serve
 .PHONY: run
 
 deploy:

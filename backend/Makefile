@@ -11,4 +11,4 @@ run: .env
 	docker-compose up
 
 stop: .env
-	docker-compose down
+	docker-compose down --remove-orphans
